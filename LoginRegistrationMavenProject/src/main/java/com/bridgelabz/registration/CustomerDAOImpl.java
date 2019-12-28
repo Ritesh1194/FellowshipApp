@@ -1,6 +1,7 @@
 package com.bridgelabz.registration;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -25,9 +26,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	public Customer getCustomer(String username, String password) {
+		System.out.println(username);
+		System.out.println(password);
 		Customer customer = new Customer();
 
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/Ritesh?autoReconnect=true&useSSL=false", "root", "mysql");
 			preparedStatement = connection.prepareStatement("select * from customer where username =? and password=?");
 			preparedStatement.setString(1, username);
 			preparedStatement.setString(2, password);
@@ -39,12 +45,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customer.setName(result.getString(3));
 				result.close();
 				preparedStatement.close();
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return customer;
-
 	}
 }
