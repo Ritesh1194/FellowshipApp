@@ -1,0 +1,7 @@
+package com.bridgelabz.registration.bean;
+
+import java.io.Serializable;
+
+public class Employee implements Serializable {
+	private static final long SERIALVERSIONUID = 1L;
+}

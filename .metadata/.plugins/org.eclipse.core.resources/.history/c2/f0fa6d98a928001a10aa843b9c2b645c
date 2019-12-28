@@ -1,0 +1,7 @@
+package com.bridgelabz.login.database;
+
+public class LoginDao {
+	public boolean validate(LoginBean loginBean) throws ClassNotFoundException {
+
+	}
+}

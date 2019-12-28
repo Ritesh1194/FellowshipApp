@@ -1,0 +1,8 @@
+package com.bridgelabz.login.bean;
+
+import java.io.Serializable;
+
+public class LoginBean implements Serializable {
+
+	private static final long SERIALVERSIONUID = 1L;
+}

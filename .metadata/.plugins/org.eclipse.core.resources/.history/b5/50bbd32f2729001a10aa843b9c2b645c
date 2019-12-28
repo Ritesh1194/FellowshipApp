@@ -1,0 +1,5 @@
+package com.bridgelabz.registration.bean;
+
+public class Employee {
+
+}

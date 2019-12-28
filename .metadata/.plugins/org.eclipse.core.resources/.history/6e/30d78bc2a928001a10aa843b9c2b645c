@@ -1,0 +1,12 @@
+package com.bridgelabz.login.database;
+
+import com.bridgelabz.login.bean.LoginBean;
+
+public class LoginDao {
+	public boolean validate(LoginBean loginBean) throws ClassNotFoundException {
+		boolean status = false;
+
+		Class.forName("com.mysql.jdbc.Driver");
+		return status;
+	}
+}

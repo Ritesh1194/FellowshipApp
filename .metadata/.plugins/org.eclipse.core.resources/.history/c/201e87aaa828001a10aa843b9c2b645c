@@ -1,0 +1,5 @@
+package com.bridgelabz.login.bean;
+
+public class LoginBean {
+
+}

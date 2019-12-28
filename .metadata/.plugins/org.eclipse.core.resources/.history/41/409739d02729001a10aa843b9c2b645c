@@ -1,0 +1,5 @@
+package com.bridgelabz.registration.database;
+
+public class RegistrationDao {
+
+}
