@@ -38,8 +38,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customer.setUsername(result.getString(1));
 				customer.setPassword(result.getString(2));
 				customer.setName(result.getString(3));
-				result.close();
-				preparedStatement.close();
+//				result.close();
+//				preparedStatement.close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
