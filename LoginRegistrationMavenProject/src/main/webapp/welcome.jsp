@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Welcome</title>
 </head>
-<body style="color: FFFFFF">
+<body style="color: #7B68EE">
 	<%-- <h1>${message}!!!WelcomeTo Home Page</h1>--%>
 	<h1>WelcomeTo Home Page</h1>
 </body>

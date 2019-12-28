@@ -28,10 +28,10 @@ public class LoginRegister extends HttpServlet {
 		// System.out.println("PW"+password);
 		String submitType = request.getParameter("submit");
 
-		 Customer customer = new Customer();
-		 customer = customerDAO.getCustomer(userName, password);
+		// Customer customer = new Customer();
+		Customer customer = customerDAO.getCustomer(userName, password);
 
-		if (submitType.equals("Login") && customer != null) {
+		if (submitType.equals("Login") && customer != null && customer.getName() != null) {
 			request.setAttribute("message", userName);
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 

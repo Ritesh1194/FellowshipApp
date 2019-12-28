@@ -9,30 +9,31 @@
 <body>
 	<form action="LoginRegister" method="post">
 		<table
-			style="background-color: skyblue; margin-right: 20px; margin-left: 20px;">
+			style="background-color: #F0FFFF; margin-right: 20px; margin-left: 20px;">
 			<tr>
 				<td><h2 style="color: black">Registration Page!!!!</h2></td>
 			</tr>
 			<tr>
 				<td>UserName :</td>
-				<td><input type="text" name="username"></td>
+				<td><input type="text" name="username" required="required"></td>
 			</tr>
 			<tr>
 				<td>Name :</td>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="name" required="required"></td>
 			</tr>
 
 
 			<tr>
 				<td>Password :</td>
-				<td><input type="password" name="password1"></td>
+				<td><input type="password" name="password1" required="required"></td>
 			</tr>
 			<tr>
 				<td>Re-Type Password :</td>
 				<td><input type="password" name="password2"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" name="submit" value="register"></td>
+				<td><input type="submit" name="submit" value="register"
+					required="required"></td>
 				<td></td>
 			</tr>
 		</table>
