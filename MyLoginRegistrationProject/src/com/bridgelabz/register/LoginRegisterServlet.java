@@ -8,14 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.bridgelabz.register.dao.CustomerDAO;
 import com.bridgelabz.register.dao.CustomerDAOImpl;
 import com.bridgelabz.register.model.Customer;
 
-/**
- * Servlet implementation class LoginRegister
- */
 public class LoginRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +53,7 @@ public class LoginRegisterServlet extends HttpServlet {
 
 			customerDAO.insertCustomer(customer);
 
-			request.setAttribute("successMessage", "Registration Done, PleaseLogin to continue");
+			request.setAttribute("successMessage", "Registration Done, Please Login to continue");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			request.setAttribute("message", "Data Not Found, Click On Register");
