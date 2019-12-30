@@ -1,11 +1,13 @@
 package com.bridgelabz.register;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginRegister
@@ -19,7 +21,10 @@ public class LoginRegister extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		response.setContentType("text/html");
+
+		PrintWriter out = response.getWriter();
 
 		CustomerDAO customerDAO = new CustomerDAOImpl();
 		String userName = request.getParameter("username");
@@ -29,8 +34,12 @@ public class LoginRegister extends HttpServlet {
 		Customer customer = customerDAO.getCustomer(userName, password);
 
 		if (submitType.equals("Login") && customer != null && customer.getName() != null) {
-			request.setAttribute("message", userName);
+			HttpSession session = request.getSession(true);
+
+			session.setAttribute("message", userName);
+			session.setMaxInactiveInterval(30); // 30 seconds
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			//response.sendRedirect("welcome.jsp");
 
 		} else if (submitType.equals("register")) {
 			customer.setName(request.getParameter("name"));
