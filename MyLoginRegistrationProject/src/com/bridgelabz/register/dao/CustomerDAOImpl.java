@@ -1,10 +1,8 @@
 package com.bridgelabz.register.dao;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import com.bridgelabz.register.database.DatabaseConnection;
 import com.bridgelabz.register.model.Customer;
 
@@ -41,12 +39,44 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customer.setUsername(result.getString(1));
 				customer.setPassword(result.getString(2));
 				customer.setName(result.getString(3));
-//				result.close();
-//				preparedStatement.close();
+				// result.close();
+				// preparedStatement.close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return customer;
 	}
+
+	// protected void doPost(HttpServletRequest request, HttpServletResponse
+	// response)
+	// throws ServletException, IOException {
+	// response.setContentType("text/html");
+	// PrintWriter printWriter = response.getWriter();
+	// try {
+	// Class.forName("com.mysql.jdbc.Driver").newInstance();
+	// Connection con =
+	// DriverManager.getConnection("jdbc:mysql://localhost:3306/Ritesh", "root",
+	// "mysql");
+	// Statement st = con.createStatement();
+	// String userName = request.getParameter("username");
+	// String password = request.getParameter("password1");
+	// String name = request.getParameter("name");
+	// String strQuery = "SELECT COUNT(*) FROM customer where username='" +
+	// userName + "'";
+	// ResultSet rs = st.executeQuery(strQuery);
+	// rs.next();
+	// String Countrow = rs.getString(1);
+	// printWriter.println(Countrow);
+	// if (Countrow.equals("0")) {
+	// int i = st.executeUpdate("insert into
+	// customer(username,password,name)values('" + userName + "','"
+	// + password + "','" + name + "')");
+	// } else {
+	// printWriter.println("User name or Email already exists !");
+	// }
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
 }

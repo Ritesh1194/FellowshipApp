@@ -2,6 +2,7 @@ package com.bridgelabz.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -47,6 +48,5 @@ public class FilterForUserName implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-
 	}
 }

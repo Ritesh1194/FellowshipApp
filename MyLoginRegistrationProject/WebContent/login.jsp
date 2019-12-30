@@ -9,7 +9,7 @@
 <body>
 	<form action="LoginRegister" method="post">
 		<table
-			style="background-color: #778899; margin-right: 20px; margin-left: 20px;">
+			style="background-color: #778899;">
 			<tr>
 				<td><h3 style="color: red;">${message}</h3>
 					<h3 style="color: green;">${successMessage}</h3></td>

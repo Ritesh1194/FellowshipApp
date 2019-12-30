@@ -9,7 +9,7 @@
 <body>
 	<form action="LoginRegister" method="post">
 		<table
-			style="background-color: rgba(50, 115, 220, 0.3); margin-right: 10px; margin-left: 10px;">
+			style="background-color: rgba(50, 115, 220, 0.3);">
 			<tr>
 				<td><h2 style="color: black">Registration Page!!!!</h2></td>
 			</tr>
@@ -36,6 +36,11 @@
 				<td></td>
 			</tr>
 		</table>
+		<span style="color: red;">${error}</span>
+	<span style="color: red;">${error}</span>
 	</form>
+	
+	
+	
 </body>
 </html>

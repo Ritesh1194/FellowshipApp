@@ -2,7 +2,11 @@ package com.bridgelabz.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,26 +39,45 @@ public class LoginRegisterServlet extends HttpServlet {
 		if (submitType.equals("Login") && customer != null && customer.getName() != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("message", userName);
-			session.setMaxInactiveInterval(30); // 30 seconds
+			session.setMaxInactiveInterval(30);
 
 			if (session != null) {
 				session = request.getSession(false);
-				// String username = (String) session.getAttribute("username");
 				userName = (String) session.getAttribute("username");
 				printWriter.print("Welcome " + userName);
 				request.getRequestDispatcher("welcome.jsp").forward(request, response);
-				// response.sendRedirect("welcome.jsp");
 			}
 		} else if (submitType.equals("register")) {
-			customer.setName(request.getParameter("name"));
+			userName = request.getParameter("username");
+			int count = 0;
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Ritesh", "root",
+						"mysql");
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement
+						.executeQuery("select * from customer where username='" + userName + "'");
+				while (resultSet.next()) {
+					count++;
+				}
+				if (count > 0) {
+					request.setAttribute("error", "Error: User Is Already exists");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.jsp");
+					requestDispatcher.forward(request, response);
+				} else {
+					customer.setName(request.getParameter("username"));
+					customer.setPassword(password);
+					customer.setUsername(userName);
 
-			customer.setPassword(password);
-			customer.setUsername(userName);
+					customerDAO.insertCustomer(customer);
 
-			customerDAO.insertCustomer(customer);
-
-			request.setAttribute("successMessage", "Registration Done, Please Login to continue");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+					request.setAttribute("successMessage", "Registration Done, Please Login to continue");
+					request.getRequestDispatcher("login.jsp").forward(request, response);
+					printWriter.println("Data is successfully inserted!");
+				}
+			} catch (Exception e) {
+				System.out.print(e);
+			}
 		} else {
 			request.setAttribute("message", "Data Not Found, Click On Register");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
