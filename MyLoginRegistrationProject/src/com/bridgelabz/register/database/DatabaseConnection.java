@@ -1,9 +1,9 @@
-package com.bridgelabz.register;
+package com.bridgelabz.register.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class MyProvider {
+public class DatabaseConnection {
 	private static Connection connection = null;
 
 	public static Connection dbConnection() {

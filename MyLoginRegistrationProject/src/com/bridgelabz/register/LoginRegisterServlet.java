@@ -9,24 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bridgelabz.register.dao.CustomerDAO;
+import com.bridgelabz.register.dao.CustomerDAOImpl;
+import com.bridgelabz.register.model.Customer;
+
 /**
  * Servlet implementation class LoginRegister
  */
-public class LoginRegister extends HttpServlet {
+public class LoginRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LoginRegister() {
+	public LoginRegisterServlet() {
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		response.setContentType("text/html");
-
-		PrintWriter out = response.getWriter();
+		PrintWriter printWriter = response.getWriter();
 
 		CustomerDAO customerDAO = new CustomerDAOImpl();
+
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password1");
 		String submitType = request.getParameter("submit");
@@ -34,13 +37,18 @@ public class LoginRegister extends HttpServlet {
 		Customer customer = customerDAO.getCustomer(userName, password);
 
 		if (submitType.equals("Login") && customer != null && customer.getName() != null) {
-			HttpSession session = request.getSession(true);
-
+			HttpSession session = request.getSession();
 			session.setAttribute("message", userName);
 			session.setMaxInactiveInterval(30); // 30 seconds
-			request.getRequestDispatcher("welcome.jsp").forward(request, response);
-			//response.sendRedirect("welcome.jsp");
 
+			if (session != null) {
+				session = request.getSession(false);
+				// String username = (String) session.getAttribute("username");
+				userName = (String) session.getAttribute("username");
+				printWriter.print("Welcome " + userName);
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
+				// response.sendRedirect("welcome.jsp");
+			}
 		} else if (submitType.equals("register")) {
 			customer.setName(request.getParameter("name"));
 

@@ -1,13 +1,16 @@
-package com.bridgelabz.register;
+package com.bridgelabz.register.dao;
 
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.bridgelabz.register.database.DatabaseConnection;
+import com.bridgelabz.register.model.Customer;
+
 public class CustomerDAOImpl implements CustomerDAO {
 
-	static Connection connection = MyProvider.dbConnection();
+	static Connection connection = DatabaseConnection.dbConnection();
 
 	static PreparedStatement preparedStatement;
 

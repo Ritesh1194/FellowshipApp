@@ -1,4 +1,4 @@
-package com.bridgelabz.register;
+package com.bridgelabz.register.model;
 
 public class Customer {
 	private String username;

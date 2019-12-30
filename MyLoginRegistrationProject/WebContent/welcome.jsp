@@ -9,5 +9,7 @@
 <body style="color: #808080">
 	<%-- <h1>${message}!!!WelcomeTo Home Page</h1> --%>
 	<h1>Welcome To Home Page</h1>
+	<br />
+	<a href="logout">Logout</a>
 </body>
 </html>
